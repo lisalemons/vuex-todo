@@ -1,20 +1,23 @@
 <template>
-  <form @submit.prevent="createToDo" class="todo__wrapper noselect">
-    <div class="todo__info">
-      <div class="todo__title">
-        <input type="text" placeholder="Title of todo" v-model="todo.title">
+  <form @submit.prevent="createToDo">
+    <div class="todo__wrapper noselect">
+      <div class="todo__info">
+        <div class="todo__title">
+          <input type="text" placeholder="Title of todo" v-model="todo.title">
+        </div>
+        <div class="todo__description">
+          <textarea v-model="todo.description">Enter a description here</textarea>
+        </div>
       </div>
-      <div class="todo__description">
-        <textarea v-model="todo.description">Enter a description here</textarea>
-      </div>
-    </div>
-    <div class="todo__done-wrapper" @click="toggleDone">
-      <div class="todo__done-content">
-        <div class="todo__done-did" v-if="todo.done">
-          &check;
+      <div class="todo__done-wrapper" @click="toggleDone">
+        <div class="todo__done-content">
+          <div class="todo__done-did" v-if="todo.done">
+            &check;
+          </div>
         </div>
       </div>
     </div>
+     <button class="todo__submit" type="submit">Save</button>
   </form>
 </template>
 <script>

@@ -10,12 +10,13 @@
       </div>
       <div class="todo__done-wrapper" @click="toggleAdd">
         <div class="todo__done-content">
-          <div class="todo__done-did" v-if="!add">
+          <div class="todo__done-did">
             &plus;
           </div>
         </div>
       </div>
     </div>
+    <!-- this just disappears on click... why? -->
     <ToDoForm v-if="add" :todo="todo"></ToDoForm>
   </div>
 
