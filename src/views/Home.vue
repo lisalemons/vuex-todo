@@ -1,38 +1,39 @@
 <template>
   <div class="home">
-    <div v-for="todo in todos" :key="todo" class="todos__wrapper">
+    <div v-for="todo in todos" :key="todo.id" class="todos__wrapper">
       <ToDo
-        :title="todo.title"
-        :description="todo.description"
-        :done="todo.done"></ToDo>
+        :todo="todo"></ToDo>
     </div>
+
+    <AddAToDo></AddAToDo>
+
+    <button @click="fetchTodos">
+      Fetch TODOS from the db
+    </button>
   </div>
 </template>
 
 <script>
-// @ is an alias to /src
+import { mapState } from 'vuex'
+import AddAToDo from '@/components/AddAToDo.vue'
 import ToDo from '@/components/ToDo.vue'
 
 export default {
   name: 'home',
-  data() {
-    return {
-      todos: [
-        {
-          title: 'This is an example to do item',
-          description: 'This is the optional desription of the todo',
-          done: true
-        },
-                {
-          title: 'This is an example to do item',
-          description: 'This is the optional desription of the todo. This is the optional desription of the todo. This is the optional desription of the todo. This is the optional desription of the todo.',
-          done: true
-        }
-      ]
-    }
-  },
   components: {
+    AddAToDo,
     ToDo
+  },
+  computed: {
+    ...mapState(['todos'])
+  },
+  methods: {
+    fetchTodos() {
+      this.$store.dispatch('getAllTodos')
+      .catch((err) => {
+        console.error({err})
+      })
+    }
   }
 }
 </script>
