@@ -32,19 +32,24 @@ export default {
   data () {
     return {
       add: false,
-      todo: {
+      todo: this.createToDo()
+    }
+  },
+  methods: {
+    toggleAdd() {
+      console.log('toggleAdd',  { add:  this.add , todo: this.todo })
+      this.add = !this.add
+      console.log('toggleAdd',  { add:  this.add , todo: this.todo })
+    },
+    createToDo() {
+      const id = Math.floor(Math.random() * 10000)
+      return {
+        id,
         title: '',
         description: '',
         done: false
       }
     }
-  },
-  methods: {
-    toggleAdd() {
-      console.log('toggleAdd',  { add:  this.add })
-      this.add = !this.add
-      console.log('toggleAdd',  { add:  this.add })
-    },
   }
 }
 </script>

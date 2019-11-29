@@ -5,7 +5,7 @@
         <input type="text" placeholder="Title of todo" v-model="todo.title">
       </div>
       <div class="todo__description">
-        <textarea v-model="todo.description"></textarea>
+        <textarea v-model="todo.description">Enter a description here</textarea>
       </div>
     </div>
     <div class="todo__done-wrapper" @click="toggleDone">
@@ -17,7 +17,6 @@
     </div>
   </form>
 </template>
-
 <script>
 import ToDoService from '@/services/ToDoService'
 
